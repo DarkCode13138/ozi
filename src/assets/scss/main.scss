@@ -1,0 +1,366 @@
+@import "utils/libs";
+@import "utils/vars";
+@import "utils/mixins";
+@import "utils/fonts";
+@import "utils/reset";
+
+html {
+  line-height: $mainLineHeight;
+  font-size: $mainFontSize;
+  color: $mainFontColor;
+  height: 100%;
+  @media screen and (max-width: $desktopWidth) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: $tableWidth) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: $phoneWidth) {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+  font-weight: $mainFontWeight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+section,
+.section {
+  position: relative;
+  padding: 40px 0;
+  @media screen and (max-width: $smDesktopWidth) {
+    padding: 36px 0;
+  }
+  @media screen and (max-width: $tableWidth) {
+    padding: 28px 0;
+  }
+  @media screen and (max-width: $phoneWidth) {
+    padding: 20px 0;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  margin: 0 auto;
+  max-width: $desktopWidth;
+  //@media screen and (max-width: $smDesktopWidth) {
+  //  max-width: $tableWidth;
+  //}
+  //@media screen and (max-width: $tableWidth) {
+  //  max-width: $phoneWidth;
+  //}
+  //@media screen and (max-width: $phoneWidth) {
+  //  max-width: $smPhoneWidth;
+  //}
+}
+
+// Modules:
+// example: @import "modules/my-module.scss";
+header{
+  background: #000;
+  min-height: 62px;
+}
+
+.m-navbar__menu-wrap{
+  display: flex;
+  align-items: center;
+  position: relative;
+  .m-navbar__submenu-wrap{
+    display: none;
+    width: 100%;
+
+  }
+  .m-navbar__submenu{
+    background: #F2F2F2;
+    display: flex;
+    width: 100%;
+    left: 0;
+    .m-navbar__drop-menu-el{
+
+
+    }
+  }
+}
+.m-navbar__submenu{
+  &:hover{
+    .m-navbar__drop-menu-el{
+      display: block;
+    }
+  }
+}
+.m-navbar__menu-el{
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 5px;
+    background: red;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    transition: .5s;
+  }
+  a{
+    padding: 20px;
+    display: block;
+    font-size: 16px;
+    color: #C0C4CC;
+  }
+}
+//.m-navbar__menu{
+//
+//   &:hover{
+//     .m-navbar__menu-el:after{
+//       left: 0;
+//       width: 100%;
+//
+//   }
+//    .m-navbar__submenu-wrap{
+//      display: block;
+//      position: absolute;
+//      left: 0;
+//    }
+//   }
+//}
+.m-navbar__submenu-el{
+  > a{
+    font-weight: 500;
+    color: #212529;
+  }
+  //a:hover{
+  //   background: #444ce0;
+  //
+  // }
+
+  a{
+    padding: 20px;
+    display: block;
+
+  }
+}
+.m-navbar__drop-menu-el{
+  a{
+    color: #5D5D5D;
+    font-size: 15px;
+  }
+}
+.m-navbar__toggler{
+  display: none;
+}
+@media (min-width: 968px) {
+  .m-navbar__menu {
+
+    &:hover {
+      .m-navbar__menu-el:after {
+        left: 0;
+        width: 100%;
+
+      }
+
+      .m-navbar__submenu-wrap {
+        display: block;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+  .m-navbar__submenu-el {
+
+    a:hover {
+      background: #444ce0;
+
+    }
+
+  }
+}
+@media screen  and  (max-width: 968px){
+  .m-navbar__menu-wrap{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .m-navbar__toggler{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .m-navbar__elements{
+    overflow: hidden;
+    //max-height: 0;
+    transition: .5s;
+    max-height: 100%;
+    padding: 0px 20px;
+  }
+
+
+  .m-navbar__toggler svg {
+    width: 45px;
+    height: 45px;
+    fill: none;
+    border-radius: 50%;
+    transition: 1s;
+    cursor: pointer;
+    margin: 15px;
+  }
+
+  line,
+  path {
+    stroke-linecap: round;
+    pointer-events: none;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+    stroke: #eee;
+    transition: .65s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  #svgPath {
+    /* stroke-dashoffset: -419%; */
+    /* stroke-dasharray: 0 0 359%; */
+    stroke-dashoffset: 0.1%;
+    stroke-dasharray: 0 0 65% 360%;
+    transition: .65s cubic-bezier(0.68, 0.55, 0.265, 1.0);
+    transition-delay: 250ms ;
+  }
+
+  .line.path {
+    stroke-dasharray: 0 75% 290% 1000% !important;
+    stroke: #666 !important;
+  }
+
+  .line.top {
+    transform: rotate(45deg) translateY(-30%) translateX(20px);
+    transform: rotate(36deg) translateY(-17px) translateX(18px);
+  }
+
+  .line.bottom {
+    transform: rotate(-45deg) translateY(-0%) translateX(-50px);
+  }
+
+  .line.transitionDelay{
+    transition-delay: 250ms !important;
+  }
+
+
+  .m-navbar__menu{
+    width: 100%;
+  }
+  .menu_btn{
+    width: 24px;
+    height: 24px;
+    background: url(/assets/img/icon/armenu.svg) 50% no-repeat;
+    background-size: 12px;
+    padding: 22px;
+    display: block;
+    z-index: 100;
+    background-position: center;
+    transition: .3s;
+  }
+  .m-navbar__menu-el{
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .m-navbar__menu-el:hover{
+    &:after{
+      content: none;
+    }
+  }
+  .m-navbar__menu:hover{
+
+  }
+
+  .m-navbar__menu-wrap  {
+    width: 100%;
+    .m-navbar__submenu-wrap{
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      //max-height: 0;
+      overflow: hidden;
+      .m-navbar__submenu{
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+  }
+  .m-navbar__submenu-item{
+    display: flex;
+    align-items: center;
+  }
+  .m-navbar__submenu-wrap{
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+  }
+
+}
+.m-navbar__menu-el.active{
+  .menu_btn{
+    transform: rotate(90deg);
+    transition: .3s;
+  }
+}
+.menu_btn.active{
+  transform: rotate(90deg);
+  transition: .3s;
+}
+.menu_btn.active-sub{
+  transform: rotate(90deg);
+  transition: .3s;
+}
+//.m-navbar__submenu{
+//  max-height: 0;
+//}
+
+
+
