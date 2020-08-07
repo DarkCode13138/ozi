@@ -6,9 +6,7 @@
 # Node
 node_modules
 
-# Dist & tests
-test
-dist
+
 
 # Logs:
 *.log
